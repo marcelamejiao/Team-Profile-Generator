@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "generates a HTML which lists employees",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelamejiao/Team-Profile-Generator.git"
+  },
+  "author": "Marcela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelamejiao/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/marcelamejiao/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^9.0.2"
+  }
+}
