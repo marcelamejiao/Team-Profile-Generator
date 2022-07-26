@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/marcelamejiao/Team-Profile-Generator#readme",
   "dependencies": {
-    "inquirer": "^6.5.2"
+    "inquirer": "^6.5.2",
+    "jest": "^24.9.0"
   }
 }
