@@ -178,7 +178,7 @@ function generateHTML() {
                             <ul class="list-questions">
                                 <li class="list-questions-item">ID: ${engineer.getId()}</li>
                                 <li class="list-questions-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                                <li class="list-questions-item alert alert-primary" style="list-style-type: none;">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+                                <li class="list-questions-item alert alert-primary" style="list-style-type: none;">GitHub: <a target="_blank" href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
                             </ul>
                         </div>
                     </div>`;   
