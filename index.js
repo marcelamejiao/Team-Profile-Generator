@@ -158,32 +158,32 @@ function generateHTML() {
         </header>
         
         <div class="container">
-            <h1 class="display-4"> ${state.manager.name} Manager</h1>
+            <h1 class="display-4"> ${state.manager.getName()} Manager</h1>
             <ul class="list-questions">
-                <li class="list-questions-item">ID: ${state.manager.id}</li>
-                <li class="list-questions-item">Email: ${state.manager.email}</li>
+                <li class="list-questions-item">ID: ${state.manager.getId()}</li>
+                <li class="list-questions-item">Email: ${state.manager.getEmail()}</li>
                 <li class="list-questions-item">Office number: ${state.manager.officeNumber}</li>
             </ul>
         </div>`;
 
         for (const engineer of state.engineers) {
             html += `<div class="container">
-            <h1 class="display-4"> ${engineer.name} Engineer</h1>
+            <h1 class="display-4"> ${engineer.getName()} Engineer</h1>
             <ul class="list-questions">
-                <li class="list-questions-item">ID: ${engineer.id}</li>
-                <li class="list-questions-item">Email: ${engineer.email}</li>
-                <li class="list-questions-item">GitHub: ${engineer.github}</li>
+                <li class="list-questions-item">ID: ${engineer.getId()}</li>
+                <li class="list-questions-item">Email: ${engineer.getEmail()}</li>
+                <li class="list-questions-item">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
             </ul>
             </div>`;
         }
 
         for (const intern of state.interns) {
             html += `<div class="container">
-            <h1 class="display-4"> ${intern.name} Intern</h1>
+            <h1 class="display-4"> ${intern.getName()} Intern</h1>
             <ul class="list-questions">
-                <li class="list-questions-item">ID: ${intern.id}</li>
-                <li class="list-questions-item">Email: ${intern.email}</li>
-                <li class="list-questions-item">School: ${intern.school}</li>
+                <li class="list-questions-item">ID: ${intern.getId()}</li>
+                <li class="list-questions-item">Email: ${intern.getEmail()}</li>
+                <li class="list-questions-item">School: ${intern.getSchool()}</li>
             </ul>
             </div>`;
         }
