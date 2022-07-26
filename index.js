@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 // const Engineer = require('./Engineer');
 // const Intern = require('./Intern');
 
@@ -84,11 +86,12 @@ const menuQuestion = [
     {
         type: 'list',
         choices: [
-            "Engineer",
-            "Intern",
+            "Add Engineer",
+            "Add Intern",
+            "Exit"
         ],
         name: 'menu',
-        message: 'Would you like to add an:',
+        message: 'What would you like to add:',
     },
 ];
     
@@ -104,35 +107,42 @@ function init() {
             const manager = new Manager(managerAnswers.officeNumber, managerAnswers.name, managerAnswers.employeeId, managerAnswers.email);
             state.manager = manager;
 
-            inquirer.prompt(menuQuestion)
-                .then(function(menuAnswer){
-                    if(menuAnswer.menu === 'Engineer'){
-                        // then ask engineer questions
-                        console.log('I am going to ask engineer questions')
-                    }else {
-                        //then ask intern questions
-                        console.log('I am going to ask the intern questions')
-                    }
-                })
+            showMenu();
         });
-
-    // answer = inquirer.prompt(menuQuestion);
-    
-    // if (anwser =='engineer') {
-    //     inquirer.prompt(engineerQuestions);
-    // } else {
-    //     inquirer.prompt(internQuestions);
-    // };
-
-    // questions()
-    // // Use writeFileSync method to use promises instead of a callback function
-    // .then((answers) => writeToFile('output/index.html', generateMarkdown(answers)))
-    // .then(() => console.log('Successfully wrote to output/index.html'))
-    // .catch((err) => console.error(err));
 }
 
-function generateMarkdown({answers}) {
-    `<!DOCTYPE html>
+function showMenu() {
+    inquirer.prompt(menuQuestion)
+    .then(function(menuAnswer){
+        if(menuAnswer.menu === 'Add Engineer'){
+            // then ask engineer questions
+            inquirer.prompt(engineerQuestions)
+            .then(function(engineerAnswers){
+                const engineer = new Engineer(engineerAnswers.name, engineerAnswers.employeeId, engineerAnswers.email, engineerAnswers.github);
+                
+                state.engineers.push(engineer);
+
+                showMenu();
+            })
+        } else if (menuAnswer.menu === 'Add Intern') {
+            //then ask intern questions
+            inquirer.prompt(internQuestions)
+            .then(function(internAnswers){
+                const intern = new Intern (internAnswers.name, internAnswers.employeeId, internAnswers.email, internAnswers.school);
+                
+                state.interns.push(intern);
+                showMenu();
+
+            })
+        } else {
+            //exit - generate HTML
+            generateHTML();
+        }
+    });
+}
+
+function generateHTML() {
+    let html = `<!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
@@ -148,31 +158,41 @@ function generateMarkdown({answers}) {
         </header>
         
         <div class="container">
-            <h1 class="display-4"> ${Manager.this.name} Manager</h1>
+            <h1 class="display-4"> ${state.manager.name} Manager</h1>
             <ul class="list-questions">
-                <li class="list-questions-item">ID: ${Manager.this.id}</li>
-                <li class="list-questions-item">Email: ${Manager.this.email}</li>
-                <li class="list-questions-item">Office number: ${Manager.this.officeNumber}</li>
+                <li class="list-questions-item">ID: ${state.manager.id}</li>
+                <li class="list-questions-item">Email: ${state.manager.email}</li>
+                <li class="list-questions-item">Office number: ${state.manager.officeNumber}</li>
             </ul>
-        </div>
-        <div class="container">
-        <h1 class="display-4"> ${Engineer.this.name} Manager</h1>
-        <ul class="list-questions">
-            <li class="list-questions-item">ID: ${Engineer.this.id}</li>
-            <li class="list-questions-item">Email: ${Engineer.this.email}</li>
-            <li class="list-questions-item">GitHub: ${Engineer.this.github}</li>
-        </ul>
-        </div>
-        <div class="container">
-        <h1 class="display-4"> ${Intern.this.name} Manager</h1>
-        <ul class="list-questions">
-            <li class="list-questions-item">ID: ${Intern.this.id}</li>
-            <li class="list-questions-item">Email: ${Intern.this.email}</li>
-            <li class="list-questions-item">Office number: ${Intern.this.school}</li>
-        </ul>
-        </div>
+        </div>`;
+
+        for (const engineer of state.engineers) {
+            html += `<div class="container">
+            <h1 class="display-4"> ${engineer.name} Engineer</h1>
+            <ul class="list-questions">
+                <li class="list-questions-item">ID: ${engineer.id}</li>
+                <li class="list-questions-item">Email: ${engineer.email}</li>
+                <li class="list-questions-item">GitHub: ${engineer.github}</li>
+            </ul>
+            </div>`;
+        }
+
+        for (const intern of state.interns) {
+            html += `<div class="container">
+            <h1 class="display-4"> ${intern.name} Intern</h1>
+            <ul class="list-questions">
+                <li class="list-questions-item">ID: ${intern.id}</li>
+                <li class="list-questions-item">Email: ${intern.email}</li>
+                <li class="list-questions-item">School: ${intern.school}</li>
+            </ul>
+            </div>`;
+        }
+
+        html += `
     </body>
     </html>`;
+
+    writeToFile('team.html', html);
 };
 
 // Function call to initialize app
