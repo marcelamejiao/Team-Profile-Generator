@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "generates a HTML which lists employees",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "test": "jest"
   },
@@ -20,6 +17,6 @@
   },
   "homepage": "https://github.com/marcelamejiao/Team-Profile-Generator#readme",
   "dependencies": {
-    "inquirer": "^9.0.2"
+    "inquirer": "^6.5.2"
   }
 }
