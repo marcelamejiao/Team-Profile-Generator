@@ -164,7 +164,7 @@ function generateHTML() {
                         <h5 class="card-header bg-primary"> ${state.manager.getName()} Manager</h5>
                         <ul class="list-questions">
                             <li class="list-questions-item">ID: ${state.manager.getId()}</li>
-                            <li class="list-questions-item">Email: ${state.manager.getEmail()}</li>
+                            <li class="list-questions-item">Email: <a href="mailto:${state.manager.getEmail()}"> ${state.manager.getEmail()}</a></li>
                             <li class="list-questions-item">Office number: ${state.manager.officeNumber}</li>
                         </ul>
                     </div>
@@ -177,7 +177,7 @@ function generateHTML() {
                             <h5 class="card-header bg-primary"> ${engineer.getName()} Engineer</h5>
                             <ul class="list-questions">
                                 <li class="list-questions-item">ID: ${engineer.getId()}</li>
-                                <li class="list-questions-item">Email: ${engineer.getEmail()}</li>
+                                <li class="list-questions-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
                                 <li class="list-questions-item alert alert-primary" style="list-style-type: none;">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
                             </ul>
                         </div>
@@ -191,7 +191,7 @@ function generateHTML() {
                             <h5 class="card-header bg-primary"> ${intern.getName()} Intern</h5>
                             <ul class="list-questions">
                                 <li class="list-questions-item">ID: ${intern.getId()}</li>
-                                <li class="list-questions-item">Email: ${intern.getEmail()}</li>
+                                <li class="list-questions-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
                                 <li class="list-questions-item">School: ${intern.getSchool()}</li>
                             </ul>
                         </div>    
