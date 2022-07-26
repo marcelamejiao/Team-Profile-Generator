@@ -104,7 +104,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(managerQuestions)
         .then(function (managerAnswers) {
-            const manager = new Manager(managerAnswers.officeNumber, managerAnswers.name, managerAnswers.employeeId, managerAnswers.email);
+            const manager = new Manager(managerAnswers.name, managerAnswers.employeeId, managerAnswers.email, managerAnswers.officeNumber);
             state.manager = manager;
 
             showMenu();
