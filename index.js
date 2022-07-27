@@ -204,7 +204,7 @@ function generateHTML() {
     </body>
     </html>`;
 
-    writeToFile('team.html', html);
+    writeToFile('./dist/index.html', html);
 };
 
 // Function call to initialize app
