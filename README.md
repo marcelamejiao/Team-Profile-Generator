@@ -34,4 +34,4 @@ node index.js
 
 ![My Team](./assets/images/screenshot.png)
 
-💡 Walkthrough video: [https://drive.google.com/file/d/1DQEFQqS2W_-QSA4IEM_E224KHFxGrUoL/view?usp=sharing](https://drive.google.com/file/d/1DQEFQqS2W_-QSA4IEM_E224KHFxGrUoL/view?usp=sharing)
+💡 Walkthrough video: [https://drive.google.com/file/d/1gpzVehuoIUwA3U_PHXpELEt96IDX2eNB/view?usp=sharing](https://drive.google.com/file/d/1gpzVehuoIUwA3U_PHXpELEt96IDX2eNB/view?usp=sharing)
